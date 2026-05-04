@@ -1,0 +1,864 @@
+/* ==========================================================================
+   Estilos Globais e Variáveis
+   ========================================================================== */
+:root {
+    /* Cores base do projeto */
+    --azul-primario: #0d47a1;
+    --azul-secundario: #1976d2;
+    --azul-claro: #e3f2fd;
+    --branco: #ffffff;
+    --cinza-fundo: #f5f7fa;
+    --cinza-borda: #e4e7eb;
+    --cinza-texto: #4a5568;
+    --preto-texto: #2d3748;
+    --sombra: 0 4px 20px rgba(0, 0, 0, 0.08);
+    
+    /* Espaçamentos */
+    --espacamento-xs: 0.5rem;
+    --espacamento-sm: 1rem;
+    --espacamento-md: 1.5rem;
+    --espacamento-lg: 2rem;
+    --espacamento-xl: 3rem;
+    
+    /* Bordas */
+    --borda-arredondada: 10px;
+    --borda-arredondada-sm: 6px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cinza-fundo);
+    color: var(--cinza-texto);
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--espacamento-sm);
+}
+
+/* ==========================================================================
+   Cabeçalho Principal
+   ========================================================================== */
+.header {
+    background: linear-gradient(rgba(13, 71, 161, 0.6), rgba(25, 118, 210, 0.7)), url('imagens/Pimenta-Bueno-Ro.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Adiciona o efeito parallax */
+    color: var(--branco);
+    padding: var(--espacamento-lg) 0;
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza todo o conteúdo do cabeçalho */
+    align-items: center;
+    gap: var(--espacamento-lg);
+}
+
+.header-text {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o logo e o texto quebrem a linha se necessário */
+    align-items: center;
+    justify-content: center; /* Garante o alinhamento central dos seus filhos */
+    flex-direction: column; /* Força o alinhamento vertical (logo acima do texto) */
+    text-align: center;
+}
+
+.header-logo {
+    max-height: 80px;
+    margin-bottom: var(--espacamento-sm);
+}
+
+.title-wrapper {
+    display: flex;
+    gap: var(--espacamento-xs);
+    flex-direction: column;
+    align-items: center;
+}
+
+.header h1 {
+    /* Tamanho de fonte fluido: mínimo de 1.5rem, preferencial de 5vw, máximo de 2.2rem */
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    min-height: 42px; /* Altura mínima para evitar "pulo" do subtítulo */
+}
+
+.header-subtitle {
+    /* Tamanho de fonte fluido: mínimo de 0.9rem, preferencial de 3vw, máximo de 1.2rem */
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   Botões de Redes Sociais
+   ========================================================================== */
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espacamento-sm);
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--borda-arredondada-sm);
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--branco);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.social-button.site {
+    background-color: #2c5282; /* Um azul mais sóbrio */
+}
+
+.social-button.facebook {
+    background-color: #1877f2;
+}
+
+.social-button.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-button.youtube {
+    background-color: #ff0000;
+}
+
+/* ==========================================================================
+   Menu de Navegação das Secretarias
+   ========================================================================== */
+#secretarias-menu-wrapper {
+    background: var(--branco);
+    padding: var(--espacamento-sm) 0;
+    border-bottom: 1px solid var(--cinza-borda);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#secretarias-menu-wrapper .container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os botões */
+    gap: var(--espacamento-xs);
+}
+
+.secretaria-btn {
+    padding: 0.6rem 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--preto-texto);
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--borda-arredondada-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.secretaria-btn:hover {
+    background-color: var(--branco);
+    color: var(--azul-primario);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
+}
+
+.secretaria-btn.active {
+    background-color: var(--azul-primario);
+    color: var(--branco);
+    border-color: var(--azul-primario);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Área de Conteúdo Principal
+   ========================================================================== */
+#main-container {
+    padding: var(--espacamento-xl) 0;
+}
+
+.secretaria-content {
+    background-color: var(--branco);
+    padding: var(--espacamento-lg);
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra);
+}
+
+#intro-content {
+    display: none; /* Escondido por padrão, mostrado via JS */
+}
+
+.secretaria-content h2 {
+    color: var(--preto-texto);
+    margin-bottom: var(--espacamento-sm);
+}
+
+.secretaria-content p {
+    text-align: justify;
+}
+
+.loading-message, .error-message {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: var(--espacamento-xl);
+    font-weight: 500;
+}
+.error-message {
+    color: #d32f2f;
+}
+
+/* ==========================================================================
+   Estilos dos Cards (Copiados de carta-semast-main/style.css)
+   ========================================================================== */
+.section-title {
+    text-align: center;
+    margin-bottom: var(--espacamento-lg);
+    color: var(--azul-primario);
+    position: relative;
+    font-size: 1.6rem; /* Reduzido para melhor proporção */
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--azul-primario);
+    margin: var(--espacamento-xs) auto 0;
+    border-radius: 2px;
+}
+
+.department-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--espacamento-lg);
+}
+
+.department-card {
+    background: var(--branco);
+    border-radius: var(--borda-arredondada);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.department-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(13, 71, 161, 0.2);
+}
+
+.card-header {
+    background: linear-gradient(to right, var(--azul-primario), var(--azul-secundario));
+    color: var(--branco);
+    padding: var(--espacamento-md);
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+}
+
+.card-title {
+    flex: 1;
+}
+
+.card-title h3 {
+    font-size: 1.15rem; /* Reduzido para melhor encaixe no card */
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.card-director {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.director-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-content {
+    padding: var(--espacamento-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-md);
+    flex: 1;
+}
+
+.contact-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-sm);
+    background: var(--azul-claro);
+    padding: var(--espacamento-sm);
+    border-radius: var(--borda-arredondada-sm);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start; /* Alinha o ícone e o texto no topo */
+    gap: var(--espacamento-xs);
+}
+
+.contact-label {
+    min-width: 90px;
+    font-weight: 600;
+    color: var(--preto-texto);
+    flex-shrink: 0; /* Impede que o label encolha */
+}
+
+.contact-value-card {
+    flex: 1;
+    overflow-wrap: break-word; /* Garante que textos longos quebrem a linha */
+}
+
+.contact-value-card a {
+    color: var(--azul-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-value-card a:hover {
+    text-decoration: underline;
+}
+
+.contact-item i {
+    margin-top: 5px; /* Alinha o ícone verticalmente com o texto */
+    color: var(--azul-secundario);
+    width: 16px; /* Garante um espaço consistente para o ícone */
+}
+
+.horario-atendimento {
+    color: var(--cinza-texto);
+}
+
+.competencies {
+    flex: 1;
+}
+
+.competencies h4 {
+    font-size: 1.1rem;
+    color: var(--azul-primario);
+    margin-bottom: var(--espacamento-sm);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--cinza-borda);
+}
+
+.subsection-title {
+    text-align: center;
+    margin-top: var(--espacamento-lg);
+    margin-bottom: var(--espacamento-md);
+    color: var(--preto-texto);
+    font-size: 1.3rem;
+}
+
+.responsibles-info {
+    margin-top: var(--espacamento-sm);
+}
+.responsibles-info h4 {
+    margin-bottom: var(--espacamento-xs);
+    color: var(--preto-texto);
+}
+
+.competencies-list {
+    padding-left: 1.2rem;
+}
+
+.competencies-list li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    text-align: justify;
+}
+
+.competencies-list li::marker {
+    color: var(--azul-primario);
+}
+
+/* ==========================================================================
+   Rodapé e Botão Voltar ao Topo
+   ========================================================================== */
+.footer {
+    background: linear-gradient(rgba(13, 71, 161, 0.6), rgba(25, 118, 210, 0.7)), url('imagens/Pimenta-Bueno-Ro.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--branco);
+    padding: var(--espacamento-xl) 0 var(--espacamento-md) 0;
+    text-align: left;
+    border-top: 4px solid var(--azul-primario);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: var(--espacamento-lg);
+    gap: var(--espacamento-lg);
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-logo {
+    max-height: 50px;
+    margin-bottom: var(--espacamento-sm);
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    color: var(--branco); /* Alterado para branco sólido */
+    max-width: 280px; /* Limita a largura para melhor leitura */
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--espacamento-sm);
+    color: var(--branco); /* Alterado para branco sólido */
+    position: relative;
+    padding-bottom: var(--espacamento-xs);
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--azul-secundario);
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    align-content: center;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: var(--espacamento-xs);
+}
+
+.footer-links a,
+.footer-contact a {
+    /* Alterado para branco sólido */
+    color: var(--branco);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-items: center;
+}
+
+.footer-links a:hover {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+.footer-contact a:hover {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: left;
+    gap: 10px;
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--espacamento-sm);
+}
+
+.footer-social a {
+    color: var(--branco);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    color: var(--azul-secundario);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: var(--espacamento-md);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--branco); /* Alterado para branco sólido */
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--azul-primario);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--azul-secundario);
+    transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   Responsividade
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header {
+        padding: var(--espacamento-md) 0; /* Reduz o preenchimento vertical */
+    }
+
+    .header-logo {
+        max-height: 60px; /* Diminui o tamanho do logo */
+        margin-bottom: var(--espacamento-xs);
+    }
+
+    /* As regras de fonte do cabeçalho agora são fluidas e não precisam de ajuste aqui */
+    .secretaria-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+        font-weight: 500;
+    }
+
+    .social-button span {
+        display: none; /* Esconde o texto do botão */
+    }
+
+    .social-button {
+        padding: 0.7rem; /* Ajusta o padding para um formato quadrado */
+        width: 44px;     /* Define uma largura fixa */
+        height: 44px;    /* Define uma altura fixa */
+        justify-content: center; /* Centraliza o ícone */
+    }
+
+    .department-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        justify-content: center; /* Centraliza as colunas do rodapé */
+        text-align: center;
+    }
+    .footer-column {
+        /* Garante que a coluna do logo também se centralize */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-title::after {
+        /* Centraliza o sublinhado em telas menores */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-social, .footer-contact, .footer-links {
+        /* Centraliza o conteúdo das colunas em telas menores */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-text {
+        gap: var(--espacamento-md); /* Aumenta o espaçamento em telas menores */
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Animações
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMOSP */
+#content-semosp .card-header {
+    background: linear-gradient(to right, #ef6c00, #f57c00); /* Gradiente Laranja */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMSAU */
+#content-semsau .card-header {
+    background: linear-gradient(to right, #2e7d32, #4caf50); /* Gradiente Verde (Saúde) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMED */
+#content-semed .card-header {
+    background: linear-gradient(to right, #1565c0, #1e88e5); /* Gradiente Azul (Educação) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMFAZ */
+#content-semfaz .card-header {
+    background: linear-gradient(to right, #f9a825, #fbc02d); /* Gradiente Dourado (Finanças) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMAGRI */
+#content-semagri .card-header {
+    background: linear-gradient(to right, #558b2f, #7cb342); /* Gradiente Verde (Agricultura) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMMA */
+#content-semma .card-header {
+    background: linear-gradient(to right, #00796b, #009688); /* Gradiente Verde-azulado (Meio Ambiente) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMAST */
+#content-semast .card-header {
+    background: linear-gradient(to right, #6a1b9a, #8e24aa); /* Gradiente Roxo (Assistência Social) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da AMPIB */
+#content-autarquia .card-header {
+    background: linear-gradient(to right, #d32f2f, #f44336); /* Gradiente Vermelho (Esporte/Cultura) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards do Gabinete */
+#content-gabinete .card-header {
+    background: linear-gradient(to right, #424242, #616161); /* Gradiente Cinza Escuro (Gabinete) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SRI */
+#content-sri .card-header {
+    background: linear-gradient(to right, #283593, #3949ab); /* Gradiente Índigo (Relações Institucionais) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMPLAN */
+#content-semplan .card-header {
+    background: linear-gradient(to right, #6d4c41, #8d6e63); /* Gradiente Marrom (Planejamento) */
+}
+
+/* ==========================================================================
+   Estilos Personalizados para os Cards de Contato
+   ========================================================================== */
+
+/* Estilos para SEMOSP */
+#content-semosp .contact-info-card { background: linear-gradient(to right, #ef6c00, #f57c00); color: var(--branco); }
+#content-semosp .contact-info-card .contact-label,
+#content-semosp .contact-info-card .contact-value-card a,
+#content-semosp .contact-info-card .horario-atendimento,
+#content-semosp .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMSAU */
+#content-semsau .contact-info-card { background: linear-gradient(to right, #2e7d32, #4caf50); color: var(--branco); }
+#content-semsau .contact-info-card .contact-label,
+#content-semsau .contact-info-card .contact-value-card a,
+#content-semsau .contact-info-card .horario-atendimento,
+#content-semsau .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMED */
+#content-semed .contact-info-card { background: linear-gradient(to right, #1565c0, #1e88e5); color: var(--branco); }
+#content-semed .contact-info-card .contact-label,
+#content-semed .contact-info-card .contact-value-card a,
+#content-semed .contact-info-card .horario-atendimento,
+#content-semed .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMFAZ */
+#content-semfaz .contact-info-card { background: linear-gradient(to right, #f9a825, #fbc02d); color: var(--branco); }
+#content-semfaz .contact-info-card .contact-label,
+#content-semfaz .contact-info-card .contact-value-card a,
+#content-semfaz .contact-info-card .horario-atendimento,
+#content-semfaz .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMAGRI */
+#content-semagri .contact-info-card { background: linear-gradient(to right, #558b2f, #7cb342); color: var(--branco); }
+#content-semagri .contact-info-card .contact-label,
+#content-semagri .contact-info-card .contact-value-card a,
+#content-semagri .contact-info-card .horario-atendimento,
+#content-semagri .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMMA */
+#content-semma .contact-info-card { background: linear-gradient(to right, #00796b, #009688); color: var(--branco); }
+#content-semma .contact-info-card .contact-label,
+#content-semma .contact-info-card .contact-value-card a,
+#content-semma .contact-info-card .horario-atendimento,
+#content-semma .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMAST */
+#content-semast .contact-info-card { background: linear-gradient(to right, #6a1b9a, #8e24aa); color: var(--branco); }
+#content-semast .contact-info-card .contact-label,
+#content-semast .contact-info-card .contact-value-card a,
+#content-semast .contact-info-card .horario-atendimento,
+#content-semast .contact-info-card i { color: var(--branco); }
+
+/* Estilos para AMPIB */
+#content-autarquia .contact-info-card { background: linear-gradient(to right, #d32f2f, #f44336); color: var(--branco); }
+#content-autarquia .contact-info-card .contact-label,
+#content-autarquia .contact-info-card .contact-value-card a,
+#content-autarquia .contact-info-card .horario-atendimento,
+#content-autarquia .contact-info-card i { color: var(--branco); }
+
+/* Estilos para Gabinete */
+#content-gabinete .contact-info-card { background: linear-gradient(to right, #424242, #616161); color: var(--branco); }
+#content-gabinete .contact-info-card .contact-label,
+#content-gabinete .contact-info-card .contact-value-card a,
+#content-gabinete .contact-info-card .horario-atendimento,
+#content-gabinete .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SRI */
+#content-sri .contact-info-card { background: linear-gradient(to right, #283593, #3949ab); color: var(--branco); }
+#content-sri .contact-info-card .contact-label,
+#content-sri .contact-info-card .contact-value-card a,
+#content-sri .contact-info-card .horario-atendimento,
+#content-sri .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMPLAN */
+#content-semplan .contact-info-card { background: linear-gradient(to right, #6d4c41, #8d6e63); color: var(--branco); }
+#content-semplan .contact-info-card .contact-label,
+#content-semplan .contact-info-card .contact-value-card a,
+#content-semplan .contact-info-card .horario-atendimento,
+#content-semplan .contact-info-card i { color: var(--branco); }
+
+/* ==========================================================================
+   Estilos para o FAQ (Acordeão)
+   ========================================================================== */
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-sm);
+}
+
+.faq-item {
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--borda-arredondada-sm);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    padding: var(--espacamento-md);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--azul-primario);
+    cursor: pointer;
+    list-style: none; /* Remove a seta padrão */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none; /* Remove a seta padrão no Webkit */
+}
+
+.faq-question::after {
+    content: '\f078'; /* FontAwesome angle-down */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--azul-secundario);
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.faq-item[open] .faq-question::after {
+    transform: rotate(180deg);
+}
+
+.faq-item[open] .faq-question {
+    border-bottom: 1px solid var(--cinza-borda);
+}
+
+.faq-answer {
+    padding: var(--espacamento-md);
+    background-color: var(--cinza-fundo);
+    color: var(--preto-texto);
+    line-height: 1.6;
+}
+
+.faq-answer p {
+    margin-bottom: 0.8rem;
+    text-align: justify;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.faq-answer li {
+    margin-bottom: 0.5rem;
+    text-align: justify;
+}
