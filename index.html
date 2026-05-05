@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -7,7 +8,8 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-1: #eef3f8;
@@ -102,7 +104,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .logo-placeholder i {
@@ -251,6 +253,7 @@
                 opacity: 0;
                 transform: translateY(16px) scale(0.995);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -258,6 +261,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             .faq-section-title,
             .accordion-item {
                 animation: none;
@@ -372,7 +376,8 @@
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 800px;  /* suficiente para conteúdo extenso */
+            max-height: 800px;
+            /* suficiente para conteúdo extenso */
             padding: 5px 22px 22px 22px;
         }
 
@@ -425,9 +430,11 @@
                 padding: 14px 16px;
                 font-size: 0.9rem;
             }
+
             .faq-titulo-secretaria {
                 font-size: 1.4rem;
             }
+
             .secretaria-item {
                 padding: 8px 10px;
                 font-size: 0.75rem;
@@ -447,381 +454,441 @@
     <!-- Font Awesome para ícones ilustrativos (opcional, mas para placeholder) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-<div class="container">
-    <!-- Cabeçalho com logo da prefeitura -->
-    <div class="header">
-        <div class="prefeitura-logo">
-            <img src="assets/PREFEITURA.png" alt="Logo da Prefeitura de Pimenta Bueno">
+    <div class="container">
+        <!-- Cabeçalho com logo da prefeitura -->
+        <div class="header">
+            <div class="prefeitura-logo">
+                <img src="assets/PREFEITURA.png" alt="Logo da Prefeitura de Pimenta Bueno">
+            </div>
+            <h1 class="titulo-principal">PERGUNTAS GERAIS</h1>
+            <p class="subtitulo">Atendimento e transparência — Tire suas dúvidas sobre serviços municipais</p>
         </div>
-        <h1 class="titulo-principal">PERGUNTAS GERAIS</h1>
-        <p class="subtitulo">Atendimento e transparência — Tire suas dúvidas sobre serviços municipais</p>
+
+        <!-- Grid com as logos das secretarias (seguindo o modelo da imagem) -->
+        <div class="secretarias-grid">
+            <div class="secretaria-item active" data-secretaria="transparencia" aria-label="Portal da Transparência"
+                title="Portal da Transparência" tabindex="0" role="button">
+                <div
+                    style="width: 76px; height: 76px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: inherit;">
+                    <i class="fas fa-landmark"></i>
+                </div>
+            </div>
+            <div class="secretaria-item" data-secretaria="semfaz" aria-label="SEMFAZ" title="SEMFAZ" tabindex="0"
+                role="button">
+                <img class="secretaria-logo" src="assets/SEMFAZ.png" alt="Logo SEMFAZ">
+            </div>
+            <div class="secretaria-item" data-secretaria="semagri" aria-label="SEMAGRI" title="SEMAGRI" tabindex="0"
+                role="button">
+                <img class="secretaria-logo" src="assets/SEMAGRI.png" alt="Logo SEMAGRI">
+            </div>
+            <div class="secretaria-item" data-secretaria="semma" aria-label="SEMMA" title="SEMMA" tabindex="0"
+                role="button">
+                <img class="secretaria-logo" src="assets/SEMMA.png" alt="Logo SEMMA">
+            </div>
+            <div class="secretaria-item" data-secretaria="semosp" aria-label="SEMOSP" title="SEMOSP" tabindex="0"
+                role="button">
+                <img class="secretaria-logo" src="assets/SEMOSP.png" alt="Logo SEMOSP">
+            </div>
+            <div class="secretaria-item" data-secretaria="semsau" aria-label="SEMSAU" title="SEMSAU" tabindex="0"
+                role="button">
+                <img class="secretaria-logo" src="assets/SEMSAU.png" alt="Logo SEMSAU">
+            </div>
+        </div>
+
+        <!-- Área do FAQ (dinâmica - exibindo SEMFAZ por padrão) -->
+        <div class="faq-section" id="faqContainer">
+            <!-- Conteúdo carregado via JS conforme secretaria selecionada -->
+        </div>
+
+        <footer>
+            <i class="fas fa-regular fa-circle-info"></i> Dúvidas frequentes atualizadas conforme Legislação Municipal •
+            Pimenta Bueno - RO
+        </footer>
     </div>
 
-    <!-- Grid com as logos das secretarias (seguindo o modelo da imagem) -->
-    <div class="secretarias-grid">
-        <div class="secretaria-item active" data-secretaria="semfaz" aria-label="SEMFAZ" title="SEMFAZ">
-            <img class="secretaria-logo" src="assets/SEMFAZ.png" alt="Logo SEMFAZ">
-        </div>
-        <div class="secretaria-item" data-secretaria="semagri" aria-label="SEMAGRI" title="SEMAGRI">
-            <img class="secretaria-logo" src="assets/SEMAGRI.png" alt="Logo SEMAGRI">
-        </div>
-        <div class="secretaria-item" data-secretaria="semma" aria-label="SEMMA" title="SEMMA">
-            <img class="secretaria-logo" src="assets/SEMMA.png" alt="Logo SEMMA">
-        </div>
-        <div class="secretaria-item" data-secretaria="semosp" aria-label="SEMOSP" title="SEMOSP">
-            <img class="secretaria-logo" src="assets/SEMOSP.png" alt="Logo SEMOSP">
-        </div>
-        <div class="secretaria-item" data-secretaria="semsau" aria-label="SEMSAU" title="SEMSAU">
-            <img class="secretaria-logo" src="assets/SEMSAU.png" alt="Logo SEMSAU">
-        </div>
-    </div>
+    <script>
+        // DADOS DAS PERGUNTAS E RESPOSTAS PARA CADA SECRETARIA
+        // Por enquanto implementamos completamente a SEMFAZ; as outras secretarias terão conteúdo exemplo
+        // Você pode facilmente substituir ou ampliar conforme necessidade.
 
-    <!-- Área do FAQ (dinâmica - exibindo SEMFAZ por padrão) -->
-    <div class="faq-section" id="faqContainer">
-        <!-- Conteúdo carregado via JS conforme secretaria selecionada -->
-    </div>
+        const faqData = {
+            transparencia: {
+                nome: "Portal da Transparência - Perguntas Gerais",
+                icone: "fas fa-landmark",
+                perguntas: [
+                    {
+                        pergunta: "Qual o objetivo do Portal da Transparência?",
+                        resposta: "<p>O Portal da Transparência tem como objetivo garantir o amplo acesso aos dados relacionados à aplicação dos recursos públicos. Através dele, qualquer cidadão pode acompanhar as ações da administração pública e a gestão das finanças do município.</p>"
+                    },
+                    {
+                        pergunta: "Qual a legislação que criou o Portal da Transparência?",
+                        resposta: "<p>O Portal da Transparência foi criado a partir da promulgação da Lei Complementar nº 131, de 27 de maio de 2009, que alterou a Lei Complementar nº 101, de 4 de maio de 2000 — a chamada Lei de Responsabilidade Fiscal (LRF).</p>"
+                    },
+                    {
+                        pergunta: "Qual a importância da Lei de Acesso à Informação?",
+                        resposta: "<p>A Lei de Acesso à Informação representa um avanço democrático, pois garante que a informação pública seja de livre acesso, restringindo o sigilo apenas em casos específicos. Ela fortalece a transparência, o controle social e consolida a democracia ao reconhecer a informação como um bem público da sociedade.</p>"
+                    },
+                    {
+                        pergunta: "Quais informações estão disponíveis no Portal da Transparência?",
+                        resposta: "<p>No Portal da Transparência, estão disponíveis informações como:</p><ul style='margin-left: 20px; margin-bottom: 14px; color: #31485f;'><li>Leis orçamentárias;</li><li>Receitas arrecadadas;</li><li>Despesas realizadas;</li><li>Repasses e convênios com a União e entidades civis;</li><li>Transferências recebidas;</li><li>Gastos do governo municipal.</li></ul><p>Esses dados são apresentados de forma clara, objetiva e com linguagem acessível.</p>"
+                    },
+                    {
+                        pergunta: "Quem pode acessar os dados do Portal da Transparência?",
+                        resposta: "<p>Qualquer cidadão pode acessar o Portal da Transparência. O acesso é livre, sem necessidade de senha, autorização ou qualquer tipo de cadastro prévio.</p>"
+                    },
+                    {
+                        pergunta: "Quem é obrigado a informar dados no Portal da Transparência?",
+                        resposta: "<p>Devem informar dados no Portal da Transparência todas as entidades da Administração Direta, autarquias, fundações, fundos e empresas públicas municipais, abrangendo receitas, despesas e outras informações de interesse público.</p>"
+                    },
+                    {
+                        pergunta: "Quais informações podem ser solicitadas?",
+                        resposta: "<p>Não há limite para os tipos de informações que podem ser solicitadas. Podem ser requeridos dados sobre:</p><ul style='margin-left: 20px; margin-bottom: 14px; color: #31485f;'><li>Obras públicas;</li><li>Andamento de processos licitatórios;</li><li>Contratos administrativos;</li><li>Auditorias e fiscalizações;</li><li>Prestações de contas;</li><li>Execução orçamentária e financeira, entre outros.</li></ul>"
+                    },
+                    {
+                        pergunta: "O que é o e-SIC?",
+                        resposta: "<p>O Sistema Eletrônico do Serviço de Informação ao Cidadão (e-SIC) é uma plataforma que centraliza os pedidos de acesso à informação dirigidos aos órgãos públicos municipais. Seu objetivo é organizar e facilitar o atendimento aos cidadãos e à Administração Pública.</p>"
+                    },
+                    {
+                        pergunta: "Como tirar dúvidas sobre termos, expressões e siglas?",
+                        resposta: "<p>As dúvidas sobre termos, expressões e siglas técnicas podem ser esclarecidas no Glossário disponível no próprio Portal da Transparência.</p>"
+                    },
+                    {
+                        pergunta: "Como acessar a legislação municipal de acesso à informação?",
+                        resposta: "<p>O Decreto Municipal nº 13.412/2017 regulamenta o acesso às informações no âmbito municipal, conforme previsto na Constituição Federal (artigos 5º, inciso XXXIII, e 216, § 2º) e na Lei Federal nº 12.527/2011 (Lei de Acesso à Informação - LAI). O decreto pode ser consultado na seção de normas regulamentadoras do Portal da Transparência.</p>"
+                    }
+                ]
+            },
+            semfaz: {
+                nome: "SEMFAZ - Secretaria Municipal de Fazenda",
+                logo: "assets/SEMFAZ.png",
+                icone: "fas fa-calculator",
+                perguntas: [
+                    {
+                        secao: "Auditoria Tributária"
+                    },
+                    {
+                        pergunta: "Minha empresa foi excluída do Simples Nacional pelo ente municipal, porém não consigo visualizar o débito para regularização no site da Prefeitura. Quais podem ser os motivos e o que devo fazer?",
+                        resposta: `<p>A exclusão do Simples Nacional pode ocorrer por inadimplência de tributos municipais, estaduais ou federais, inconsistências cadastrais, atividade não permitida ou descumprimento de obrigações acessórias. Nem sempre o débito responsável pela exclusão aparece no site da Prefeitura. Assim, recomenda-se consultar também o Portal do Simples Nacional e, se necessário, entrar em contato com a <strong>Auditoria Tributária Municipal</strong> para identificar o motivo e obter orientações para regularização.</p>`
+                    },
+                    {
+                        pergunta: "Escritório de contabilidade pode recolher ISS de forma anual?",
+                        resposta: `<p>Não. Como regra, o Imposto Sobre Serviços (ISS) é devido de forma mensal, conforme a efetiva prestação dos serviços. O recolhimento em valor fixo ou anual somente é permitido quando houver previsão expressa na legislação municipal, hipótese que, em geral, se aplica a profissionais autônomos. No caso dos escritórios de contabilidade optantes pelo Simples Nacional, inexistindo autorização específica na legislação municipal para recolhimento fixo, o ISS deve ser obrigatoriamente recolhido de forma mensal, por meio do Documento de Arrecadação do Simples Nacional (DAS), integrando o regime unificado de tributação.</p><div class="base-legal"><strong>Base legal:</strong> Lei Complementar nº 123/2006, arts. 2º, 18 e § 6º; Resolução CGSN nº 140/2018, art. 25 e § 11.</div>`
+                    },
+                    {
+                        pergunta: "Com a Reforma Tributária, como fica a emissão da Nota Fiscal de Serviços (NFS-e), a cobrança do ISS e a descrição dos serviços prestados?",
+                        resposta: `<p>A cobrança do ISS permanece vinculada à efetiva prestação do serviço e à emissão da respectiva Nota Fiscal de Serviços Eletrônica (NFS-e). Cada serviço prestado deve ser descrito de forma clara e individualizada, especialmente quando envolver naturezas ou alíquotas distintas, a fim de garantir transparência e evitar inconsistências fiscais. O Município de Pimenta Bueno utiliza emissor local de NFS-e, adaptado ao Padrão Nacional, observando as regras vigentes durante o período de transição da Reforma Tributária. Os contribuintes devem permanecer atentos às alterações da legislação federal, bem como aos comunicados e normas expedidos pelo Comitê Gestor, além das orientações da Secretaria Municipal de Fazenda/Auditoria Tributária.</p>`
+                    },
+                    {
+                        pergunta: "Quais são os critérios e requisitos para concessão da isenção do IPTU, conforme o art. 314 da Lei Complementar Municipal nº 011/2017 e suas alterações?",
+                        resposta: `<p>A isenção do IPTU é concedida mediante requerimento do contribuinte que se enquadre nas hipóteses previstas na legislação municipal. O benefício aplica-se ao imóvel de propriedade e residência de aposentados, pensionistas, beneficiários do BPC, pessoas com idade superior a 65 anos, bem como portadores de neoplasia maligna ou seus dependentes, desde que também residam no imóvel.</p><p><strong>Requisitos cumulativos:</strong><br>• possuir apenas um imóvel residencial de até 700 UVF (com exceções legais para neoplasia maligna);<br>• renda familiar mensal de até 3 salários mínimos;<br>• imóvel sem locação total ou parcial;<br>• pedido protocolado até 30 de novembro do exercício anterior ao lançamento;<br>• Certidão Negativa de Débitos Municipais (CND) válida durante o benefício.</p>`
+                    },
+                    {
+                        pergunta: "Quais são as condições para obtenção do desconto no IPTU referente a benfeitorias, conforme o art. 306 da Lei Complementar Municipal nº 011/2017?",
+                        resposta: `<p>O desconto no IPTU por benfeitorias é concedido ao contribuinte que realizar a construção ou reconstrução da calçada em toda a testada do imóvel, ou comprovar que a calçada existente está em bom estado de conservação. Para usufruir do benefício, o interessado deve protocolar requerimento até 30 de novembro do exercício anterior ao lançamento do tributo e manter CND do imóvel durante todo o período de concessão.</p>`
+                    },
+                    {
+                        pergunta: "O que é a progressividade do IPTU aplicada aos imóveis não edificados e por que o valor do imposto pode aumentar ao longo do tempo?",
+                        resposta: `<p>A progressividade do IPTU para imóveis não edificados permite ao Município aumentar gradualmente a alíquota ao longo do tempo, enquanto o imóvel não cumprir sua função social. O objetivo é estimular o adequado aproveitamento do solo urbano, evitar terrenos ociosos e combater a especulação imobiliária.</p><div class="base-legal"><strong>Base legal:</strong> Art. 156, § 1º, incisos I e II, e art. 182, § 4º, inciso II, da Constituição Federal; Art. 291 da Lei Complementar Municipal nº 011/2017, com redação dada pela LC nº 17/2019; Art. 7º da Lei Federal nº 10.257/2001 (Estatuto da Cidade).</div>`
+                    },
+                    {
+                        pergunta: "O Município pode fiscalizar o ITR e quais áreas do imóvel rural não são tributáveis por esse imposto?",
+                        resposta: `<p>O ITR é de competência da União. Entretanto, o Município pode fiscalizar, lançar e cobrar esse imposto mediante convênio com a Receita Federal, passando a receber 100% da arrecadação local. Não são tributáveis as áreas legalmente protegidas, como APP, reserva legal, RPPN, áreas de interesse ecológico declaradas, servidão ambiental, florestas nativas em estágio médio ou avançado de regeneração e áreas alagadas para reservatórios autorizados.</p>`
+                    },
+                    {
+                        pergunta: "Quais são as principais características da CBS e do IBS e como serão definidas suas alíquotas na Reforma Tributária?",
+                        resposta: `<p>A CBS (federal) e o IBS (estadual e municipal) terão natureza de IVA, com base ampla de incidência sobre bens, serviços e direitos, tributação no destino e não cumulatividade plena. As alíquotas da CBS, IBS e Imposto Seletivo ainda serão definidas em lei. Durante a transição, poderão ocorrer ajustes anuais pelo Senado Federal. Estimativas apontam alíquota-padrão combinada entre 25,45% e 27%.</p>`
+                    },
+                    {
+                        pergunta: "Como a Reforma Tributária afeta as empresas optantes pelo Simples Nacional e qual é o prazo de transição para os entes federados no IBS?",
+                        resposta: `<p>A Reforma Tributária mantém o Simples Nacional e permite que empresas optantes escolham recolher IBS e CBS dentro do Simples ou fora dele, no regime normal. Na transição do IBS: 2029 (90% ISS + 10% IBS), 2030 (80% + 20%), 2031 (70% + 30%), 2032 (60% + 40%). A partir de 2033, o ISS será extinto. A redistribuição da arrecadação segue gradualmente até 2078.</p>`
+                    },
+                    {
+                        secao: "Coordenadoria de Fiscalização Tributária"
+                    },
+                    {
+                        pergunta: "Como solicito a Taxa de Funcionamento e a emissão do Alvará de Renovação Anual?",
+                        resposta: `<p>A solicitação deve ser feita por peticionamento eletrônico no Sistema de Processos Eletrônicos (E-PROC), com direcionamento ao Departamento de Desenvolvimento Econômico e Mobiliário. Em caso de dúvidas, a Sala do Empreendedor atende pelo telefone (69) 99306-6416.</p>`
+                    },
+                    {
+                        pergunta: "Quais são as documentações necessárias para a solicitação da guia de ITBI e qual o prazo para sua emissão?",
+                        resposta: `<p>As documentações exigidas e o prazo de emissão estão regulamentados na Instrução Normativa nº 01, de 03/10/2025, disponível no Portal da Transparência: https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/publicacao/detalhe_documento.php?id_publicacao=40953&nomeaplicacao=publicacao</p>`
+                    },
+                    {
+                        pergunta: "A fiscalização tributária possui prazo para conclusão dos processos administrativos?",
+                        resposta: `<p>Sim. Os prazos de análise e conclusão no âmbito da Fiscalização Tributária estão definidos na Instrução Normativa nº 02, de 17/11/2025: https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=042016&extencao=PDF</p>`
+                    },
+                    {
+                        pergunta: "Qual é a ordem de atendimento dos processos no setor de Fiscalização Tributária?",
+                        resposta: `<p>Os processos são atendidos prioritariamente pela ordem cronológica de chegada ao setor e, depois, distribuídos de forma aleatória entre os Fiscais Tributários, observadas as competências legais.</p>`
+                    },
+                    {
+                        pergunta: "Qual é a lei que institui o Código Tributário do Município de Pimenta Bueno e como posso acessá-la?",
+                        resposta: `<p>O Código Tributário Municipal foi instituído pela Lei Complementar nº 011/2017. Consulta: https://leismunicipais.com.br/a1/codigo-tributario-pimenta-bueno-ro</p>`
+                    },
+                    {
+                        secao: "Superintendência de Receitas"
+                    },
+                    {
+                        pergunta: "Quais os documentos necessários para a abertura de processos administrativos?",
+                        resposta: `<p>O contribuinte deve retirar o requerimento específico no balcão de atendimento. O próprio formulário informa a relação de documentos obrigatórios conforme o tipo de solicitação.</p>`
+                    },
+                    {
+                        pergunta: "Qual o valor das taxas de serviços prestados pela SEMFAZ?",
+                        resposta: `<p>Os valores são calculados com base na Unidade Fiscal do Município e seguem tabela oficial vigente, com os custos de cada serviço. A tabela pode ser consultada no atendimento da SEMFAZ.</p>`
+                    },
+                    {
+                        pergunta: "Como posso consultar o andamento de um processo já aberto?",
+                        resposta: `<p>O acompanhamento pode ser feito no sistema eletrônico mediante cadastro e login: https://transparencia.pimentabueno.ro.gov.br/transparencia/servicos/. Também é possível consultar presencialmente no balcão de atendimento ou via WhatsApp: (69) 98116-2254.</p>`
+                    },
+                    {
+                        pergunta: "Onde posso obter informações gerais sobre setores e localização de servidores?",
+                        resposta: `<p>No atendimento presencial, os servidores orientam sobre a localização dos setores. Se a dúvida exigir suporte específico, o chefe imediato da área é acionado para complementar o atendimento.</p>`
+                    },
+                    {
+                        pergunta: "Como emitir a 2ª via de boletos de IPTU, TRSD (Taxa de Lixo) e taxas diversas?",
+                        resposta: `<p>As guias podem ser emitidas no Portal do Contribuinte: https://pimentabueno.ro.gov.br/pagina/202_EMISSAO-DE-IPTU.html, com Inscrição Imobiliária ou CPF/CNPJ. O serviço também está disponível no balcão presencial da SEMFAZ.</p>`
+                    },
+                    {
+                        pergunta: "Como obter Certidões Negativas (CND) ou Extratos de Débitos?",
+                        resposta: `<p>A CND pode ser emitida em: https://certidao.pimentabueno.ro.gov.br/servicosweb/home.xhtml. Havendo pendências, o contribuinte pode solicitar extrato detalhado para regularização à vista ou parcelada.</p>`
+                    },
+                    {
+                        pergunta: "Quais os procedimentos para Transferência de Imóveis (ITBI)?",
+                        resposta: `<p>Para lançamento do ITBI, deve-se protocolar processo com matrícula atualizada do imóvel, contrato de compra e venda (ou escritura pública) e documentos pessoais dos envolvidos. O imposto será calculado sobre o valor venal ou de transação, após avaliação fiscal.</p>`
+                    },
+                    {
+                        pergunta: "Como solicitar o parcelamento de débitos tributários?",
+                        resposta: `<p>O parcelamento de tributos vencidos ou inscritos em Dívida Ativa pode ser solicitado pelo titular ou procurador legal, com RG/CPF, comprovante de residência e Contrato Social (para empresas). A formalização ocorre com assinatura do Termo de Acordo e pagamento da primeira parcela.</p>`
+                    },
+                    {
+                        pergunta: "Como proceder para emissão de Nota Fiscal de Serviços (NFS-e)?",
+                        resposta: `<p>Prestadores e empresas devem possuir cadastro ativo na Receita Municipal. A emissão da NFS-e é feita eletronicamente no sistema da Prefeitura com senha autorizada, ou presencialmente na SEMFAZ com documentação do prestador e dados do tomador.</p>`
+                    },
+                    {
+                        pergunta: "É possível contestar o valor de um imposto ou taxa?",
+                        resposta: `<p>Sim. É possível protocolar Requerimento de Impugnação/Revisão dentro do prazo do Calendário Fiscal, anexando documentos comprobatórios (laudos, fotos e demais evidências) para análise.</p>`
+                    },
+                    {
+                        secao: "Superintendência de Desenvolvimento Econômico (Sala do Empreendedor)"
+                    },
+                    {
+                        pergunta: "Como formalizo como Microempreendedor Individual (MEI)?",
+                        resposta: `<p>Acesse a Sala do Empreendedor Digital de Pimenta Bueno em https://sites.google.com/view/saladoempreendedorpb/sala-digital e clique em "Formalize-se". O sistema redireciona para a plataforma oficial do Governo Federal, onde o CNPJ é gerado gratuitamente. Também há atendimento presencial para orientação.</p>`
+                    },
+                    {
+                        pergunta: "Como realizar a alteração dos dados do meu MEI?",
+                        resposta: `<p>No portal da Sala do Empreendedor Digital, escolha "Alterar dados do MEI" para ser redirecionado ao sistema oficial e atualizar endereço, atividades e demais dados cadastrais. Atendimento presencial gratuito também está disponível.</p>`
+                    },
+                    {
+                        pergunta: "Como emito nota fiscal sendo Microempreendedor Individual (MEI)?",
+                        resposta: `<p>O MEI deve emitir nota pelo Portal da NFS-e. Acesse https://sites.google.com/view/saladoempreendedorpb/sala-digital, clique em "Nota Fiscal do MEI" e faça login com conta gov.br para preencher os dados da emissão.</p>`
+                    },
+                    {
+                        pergunta: "O que preciso saber antes de me formalizar como MEI?",
+                        resposta: `<p>Antes de formalizar, verifique impactos em benefícios e requisitos legais. É necessário ter conta gov.br, exercer atividade permitida ao MEI, não ser sócio de outra empresa, não ter filial, contratar no máximo um empregado e respeitar o limite de faturamento. Benefícios assistenciais e previdenciários específicos podem ser afetados conforme regras de cada programa.</p>`
+                    },
+                    {
+                        pergunta: "Como entregar a Declaração Anual do MEI?",
+                        resposta: `<p>A DASN-SIMEI é entregue no portal oficial do Governo Federal. O acesso pode ser feito pela Sala do Empreendedor Digital, na opção "Entregar Declaração Anual de Faturamento".</p>`
+                    },
+                    {
+                        pergunta: "Como emitir o boleto DAS do MEI?",
+                        resposta: `<p>Na Sala do Empreendedor Digital, selecione "Emitir Boleto DAS" para ser direcionado ao portal oficial e gerar o documento de arrecadação mensal do MEI.</p>`
+                    },
+                    {
+                        pergunta: "Como peticiono o alvará da minha empresa?",
+                        resposta: `<p>O peticionamento do alvará é feito no sistema e-Proc. Acesse https://pimentabueno.ro.gov.br/pagina/171_Processo-Eletronico.html e realize cadastro como usuário externo. Tutorial: https://youtu.be/8ampsXMSjvQ?si=kVCZvsRufJ_nQFxD</p>`
+                    },
+                    {
+                        pergunta: "Como ter acesso às linhas de crédito do PROAMPE?",
+                        resposta: `<p>Acesse a Sala do Empreendedor Digital em https://sites.google.com/view/saladoempreendedorpb/sala-digital e clique em "Solicitar Crédito do PROAMPE" para simular e solicitar o microcrédito produtivo orientado.</p>`
+                    },
+                    {
+                        pergunta: "Como faço para me credenciar no Projeto Contrata + Pimenta e prestar serviços para a Prefeitura?",
+                        resposta: `<p>O credenciamento de MEI é feito por peticionamento no Processo Eletrônico do Município: https://pimentabueno.ro.gov.br/pagina/171_Processo-Eletronico.html, na opção "Usuário Externo". Depois, selecione o requerimento de credenciamento e anexe os documentos exigidos.</p>`
+                    }
+                ]
+            },
+            semagri: {
+                nome: "SEMAGRI - Secretaria Municipal de Agricultura",
+                logo: "assets/SEMAGRI.png",
+                icone: "fas fa-leaf",
+                perguntas: [
+                    {
+                        pergunta: "Orientação técnica aos agricultores: como plantar e executar culturas como mandioca, aracá-boi, melancia, coco e outras?",
+                        resposta: "<p>Cada cultura possui especificações próprias e forma correta de execução. A SEMAGRI orienta o produtor conforme a cultura e as condições da propriedade.</p>"
+                    },
+                    {
+                        pergunta: "Quando será liberado o Programa do PAA (Programa de Aquisição de Alimentos) e quais documentos são necessários para participar?",
+                        resposta: "<p>A liberação depende do recurso federal por meio da SEAGRI. A princípio, os documentos necessários são: documentos pessoais, SINTEGRA e CAF.</p>"
+                    },
+                    {
+                        pergunta: "Como conseguir calcário gratuito?",
+                        resposta: "<p>O acesso ocorre por convênio firmado entre o Estado e a SEMAGRI, mediante apresentação da documentação exigida no termo de convênio. O frete é de responsabilidade do contribuinte.</p>"
+                    },
+                    {
+                        pergunta: "Como obter análise de solo gratuita e como realizar a coleta?",
+                        resposta: "<p>A SEMAGRI realiza o cadastro do produtor e fornece as sacolas para coleta do solo. A orientação é coletar em zig-zag na propriedade, na profundidade de 20 cm. Dependendo do tamanho da área, será necessária mais de uma amostra.</p>"
+                    },
+                    {
+                        pergunta: "Qual a documentação necessária para cadastro no SINTEGRA?",
+                        resposta: "<p>Documentos exigidos (cópia e original): Escritura Pública, Título ou Terra Legal; se for contrato, cadeia nominal completa (documentação do contrato e do proprietário); para arrendatário, contrato; CAR; RG; CPF; certidão de casamento ou nascimento. Para cadastro voltado à pecuária, também é necessário o cadastro do IDARON.</p>"
+                    }
+                ]
+            },
+            semma: {
+                nome: "SEMMA - Secretaria Municipal de Meio Ambiente",
+                logo: "assets/SEMMA.png",
+                icone: "fas fa-tree",
+                perguntas: [
+                    {
+                        pergunta: "Qual o procedimento para solicitar a autorização de corte de árvores?",
+                        resposta: "<p>O cidadão deve protocolar processo eletrônico via Sistema E-PROC, preenchendo o requerimento específico para autorização de corte em áreas públicas ou particulares e anexando a documentação exigida no formulário.</p>"
+                    },
+                    {
+                        pergunta: "Como realizar uma denúncia de crime ambiental?",
+                        resposta: "<p>As denúncias podem ser formalizadas via WhatsApp: (69) 98169-9984, por requerimento protocolado fisicamente na sede da Secretaria Municipal de Meio Ambiente ou pelos canais oficiais da Ouvidoria Municipal.</p>"
+                    },
+                    {
+                        pergunta: "Onde posso obter as sacolas para a Coleta Seletiva?",
+                        resposta: "<p>As sacolas destinadas à coleta seletiva estão disponíveis para retirada direta na sede da Secretaria Municipal de Meio Ambiente.</p>"
+                    },
+                    {
+                        pergunta: "Quais são as regras para a retirada de mudas no Viveiro Municipal?",
+                        resposta: "<p>Cada munícipe pode retirar até 05 (cinco) mudas por visita. Para produtores rurais, é necessário cadastro prévio para fornecimento de quantitativos maiores, sujeito à análise técnica.</p>"
+                    },
+                    {
+                        pergunta: "Como obter informações sobre o Licenciamento Ambiental para empresas ou atividades produtivas?",
+                        resposta: "<p>O interessado deve iniciar o processo no Sistema E-PROC, enviando o formulário de caracterização do empreendimento e os estudos ambientais pertinentes, conforme a legislação municipal vigente.</p>"
+                    }
+                ]
+            },
+            semosp: {
+                nome: "SEMOSP - Secretaria Municipal de Obras e Serviços Públicos",
+                logo: "assets/SEMOSP.png",
+                icone: "fas fa-hard-hat",
+                perguntas: [
+                    {
+                        pergunta: "Quais são as atribuições da Secretaria Municipal de Obras, Serviços Públicos e Trânsito?",
+                        resposta: "<p>A Secretaria é responsável pela execução de obras públicas, manutenção de vias urbanas e rurais, serviços de infraestrutura, limpeza urbana, iluminação pública e pela gestão do trânsito municipal.</p>"
+                    },
+                    {
+                        pergunta: "Como solicitar serviços de manutenção de vias (tapa-buracos, patrolamento, cascalhamento)?",
+                        resposta: "<p>As solicitações podem ser feitas por meio do protocolo da Prefeitura, presencialmente, pelo site da Prefeitura ou pelos canais de atendimento disponibilizados pelo Município.</p>"
+                    },
+                    {
+                        pergunta: "Quem é responsável pela manutenção da iluminação pública?",
+                        resposta: "<p>A manutenção da iluminação pública é de responsabilidade da Secretaria Municipal de Obras, em específico o setor de Superintendência de Iluminação Pública, que atua na substituição de lâmpadas, reparos e melhorias na rede de iluminação urbana.</p>"
+                    },
+                    {
+                        pergunta: "Como comunicar problemas em vias públicas?",
+                        resposta: "<p>O cidadão pode registrar a demanda junto à Secretaria por meio dos canais oficiais de atendimento, informando o local e a natureza do problema para providências.</p>"
+                    },
+                    {
+                        pergunta: "A Secretaria é responsável por obras em áreas rurais?",
+                        resposta: "<p>Sim. A Secretaria executa e acompanha serviços de manutenção e melhorias em estradas vicinais, pontes e demais infraestruturas da zona rural, conforme planejamento e disponibilidade orçamentária.</p>"
+                    },
+                    {
+                        pergunta: "Como é definida a prioridade de atendimento das solicitações de serviços?",
+                        resposta: "<p>As solicitações são analisadas pela equipe técnica da Secretaria, que define as prioridades com base na urgência, impacto à população, condições de segurança, disponibilidade de recursos e planejamento operacional.</p>"
+                    },
+                    {
+                        pergunta: "Quem define a sinalização e organização do trânsito no município?",
+                        resposta: "<p>A organização, sinalização e intervenções no trânsito urbano são de responsabilidade da Secretaria, que atua conforme a legislação de trânsito e estudos técnicos de mobilidade.</p>"
+                    },
+                    {
+                        pergunta: "É possível solicitar interdição de via ou apoio para eventos?",
+                        resposta: "<p>Sim. A solicitação deve ser formalizada por meio do protocolo da Prefeitura, com antecedência, para análise técnica e autorização, especialmente em casos de eventos, obras ou mudanças temporárias no tráfego.</p>"
+                    },
+                    {
+                        pergunta: "Como acompanhar o andamento de obras públicas no município?",
+                        resposta: "<p>As informações sobre obras podem ser consultadas no site da Prefeitura, no Portal da Transparência ou diretamente junto à Secretaria Municipal de Obras.</p>"
+                    },
+                    {
+                        pergunta: "Como entrar em contato com a Secretaria Municipal de Obras, Serviços Públicos e Trânsito?",
+                        resposta: "<p>O contato pode ser realizado presencialmente na sede da Secretaria Municipal de Obras, por telefone, e-mail institucional ou pelos canais oficiais disponíveis no site da Prefeitura.</p>"
+                    }
+                ]
+            },
+            semsau: {
+                nome: "SEMSAU - Secretaria Municipal de Saúde",
+                logo: "assets/SEMSAU.png",
+                icone: "fas fa-hospital-user",
+                perguntas: [
+                    {
+                        pergunta: "O que é o Centro de Especialidades Médicas?",
+                        resposta: "<p>O Centro de Especialidades Médicas é a unidade responsável pelo atendimento ambulatorial em especialidades médicas, mediante encaminhamento da Atenção Básica, conforme a organização da Rede de Atenção à Saúde do SUS.</p>"
+                    },
+                    {
+                        pergunta: "Como o paciente pode ter acesso às consultas no Centro de Especialidades Médicas?",
+                        resposta: "<p>O acesso ocorre exclusivamente por meio de encaminhamento realizado pela Unidade Básica de Saúde (UBS) de referência, com posterior inserção do pedido no SISREG, para análise e agendamento conforme a disponibilidade de vagas.</p>"
+                    },
+                    {
+                        pergunta: "O que é o SISREG?",
+                        resposta: "<p>O SISREG é o Sistema Nacional de Regulação, utilizado para organizar, controlar e priorizar o acesso dos usuários às consultas especializadas, exames e procedimentos ofertados pelo SUS.</p>"
+                    },
+                    {
+                        pergunta: "Qual a finalidade da Regulação em Saúde?",
+                        resposta: "<p>A Regulação em Saúde tem como finalidade garantir o acesso ordenado, equânime e transparente aos serviços de saúde, priorizando os atendimentos conforme critérios clínicos, protocolos assistenciais e a disponibilidade da rede. Também é responsável pela organização e gerenciamento do transporte de pacientes para tratamento fora do domicílio, incluindo pacientes oncológicos, em hemodiálise e demais viagens necessárias para continuidade do tratamento.</p>"
+                    },
+                    {
+                        pergunta: "Como funciona a fila de espera para consultas especializadas?",
+                        resposta: "<p>Os pedidos inseridos no SISREG são avaliados pela equipe de Regulação, que classifica os casos de acordo com a gravidade, urgência e critérios técnicos, respeitando a prioridade clínica e a oferta de vagas.</p>"
+                    },
+                    {
+                        pergunta: "O paciente pode escolher o médico ou a data da consulta especializada?",
+                        resposta: "<p>Não. As consultas são agendadas conforme a disponibilidade de vagas e os critérios definidos pela Regulação, não sendo possível a escolha do profissional ou da data pelo paciente.</p>"
+                    },
+                    {
+                        pergunta: "Quais especialidades médicas são ofertadas pelo Centro de Especialidades Médicas?",
+                        resposta: "<p>O Centro de Especialidades Médicas oferta atendimentos nas seguintes especialidades e serviços: ortopedia, ginecologia, pediatria e cirurgia geral, além da realização de exames de mamografia e eletrocardiograma, conforme a disponibilidade e a regulação do sistema.</p>"
+                    },
+                    {
+                        pergunta: "É possível acompanhar o andamento do pedido no SISREG?",
+                        resposta: "<p>Sim. O paciente pode obter informações sobre o andamento do pedido junto à UBS de referência ou diretamente no setor de Regulação da Secretaria Municipal de Saúde.</p>"
+                    },
+                    {
+                        pergunta: "O que acontece se o paciente faltar à consulta agendada?",
+                        resposta: "<p>A ausência injustificada pode resultar no retorno do pedido ao final da fila de regulação, sendo necessário novo encaminhamento pela UBS de referência.</p>"
+                    },
+                    {
+                        pergunta: "Como o cidadão pode registrar dúvidas, reclamações ou sugestões sobre a Regulação e o Centro de Especialidades?",
+                        resposta: "<p>As manifestações podem ser registradas junto à Secretaria Municipal de Saúde ou por meio dos canais oficiais da Ouvidoria do Município.</p>"
+                    }
+                ]
+            }
+        };
 
-    <footer>
-        <i class="fas fa-regular fa-circle-info"></i> Dúvidas frequentes atualizadas conforme Legislação Municipal • Pimenta Bueno - RO
-    </footer>
-</div>
+        // Função para gerar HTML do acordeon (baseado nas perguntas/respostas)
+        function renderAccordion(secretariaKey) {
+            const data = faqData[secretariaKey];
+            if (!data) return "<p>FAQ não disponível para esta secretaria no momento.</p>";
 
-<script>
-    // DADOS DAS PERGUNTAS E RESPOSTAS PARA CADA SECRETARIA
-    // Por enquanto implementamos completamente a SEMFAZ; as outras secretarias terão conteúdo exemplo
-    // Você pode facilmente substituir ou ampliar conforme necessidade.
-    
-    const faqData = {
-        semfaz: {
-            nome: "SEMFAZ - Secretaria Municipal de Fazenda",
-            logo: "assets/SEMFAZ.png",
-            icone: "fas fa-calculator",
-            perguntas: [
-                {
-                    secao: "Auditoria Tributária"
-                },
-                {
-                    pergunta: "Minha empresa foi excluída do Simples Nacional pelo ente municipal, porém não consigo visualizar o débito para regularização no site da Prefeitura. Quais podem ser os motivos e o que devo fazer?",
-                    resposta: `<p>A exclusão do Simples Nacional pode ocorrer por inadimplência de tributos municipais, estaduais ou federais, inconsistências cadastrais, atividade não permitida ou descumprimento de obrigações acessórias. Nem sempre o débito responsável pela exclusão aparece no site da Prefeitura. Assim, recomenda-se consultar também o Portal do Simples Nacional e, se necessário, entrar em contato com a <strong>Auditoria Tributária Municipal</strong> para identificar o motivo e obter orientações para regularização.</p>`
-                },
-                {
-                    pergunta: "Escritório de contabilidade pode recolher ISS de forma anual?",
-                    resposta: `<p>Não. Como regra, o Imposto Sobre Serviços (ISS) é devido de forma mensal, conforme a efetiva prestação dos serviços. O recolhimento em valor fixo ou anual somente é permitido quando houver previsão expressa na legislação municipal, hipótese que, em geral, se aplica a profissionais autônomos. No caso dos escritórios de contabilidade optantes pelo Simples Nacional, inexistindo autorização específica na legislação municipal para recolhimento fixo, o ISS deve ser obrigatoriamente recolhido de forma mensal, por meio do Documento de Arrecadação do Simples Nacional (DAS), integrando o regime unificado de tributação.</p><div class="base-legal"><strong>Base legal:</strong> Lei Complementar nº 123/2006, arts. 2º, 18 e § 6º; Resolução CGSN nº 140/2018, art. 25 e § 11.</div>`
-                },
-                {
-                    pergunta: "Com a Reforma Tributária, como fica a emissão da Nota Fiscal de Serviços (NFS-e), a cobrança do ISS e a descrição dos serviços prestados?",
-                    resposta: `<p>A cobrança do ISS permanece vinculada à efetiva prestação do serviço e à emissão da respectiva Nota Fiscal de Serviços Eletrônica (NFS-e). Cada serviço prestado deve ser descrito de forma clara e individualizada, especialmente quando envolver naturezas ou alíquotas distintas, a fim de garantir transparência e evitar inconsistências fiscais. O Município de Pimenta Bueno utiliza emissor local de NFS-e, adaptado ao Padrão Nacional, observando as regras vigentes durante o período de transição da Reforma Tributária. Os contribuintes devem permanecer atentos às alterações da legislação federal, bem como aos comunicados e normas expedidos pelo Comitê Gestor, além das orientações da Secretaria Municipal de Fazenda/Auditoria Tributária.</p>`
-                },
-                {
-                    pergunta: "Quais são os critérios e requisitos para concessão da isenção do IPTU, conforme o art. 314 da Lei Complementar Municipal nº 011/2017 e suas alterações?",
-                    resposta: `<p>A isenção do IPTU é concedida mediante requerimento do contribuinte que se enquadre nas hipóteses previstas na legislação municipal. O benefício aplica-se ao imóvel de propriedade e residência de aposentados, pensionistas, beneficiários do BPC, pessoas com idade superior a 65 anos, bem como portadores de neoplasia maligna ou seus dependentes, desde que também residam no imóvel.</p><p><strong>Requisitos cumulativos:</strong><br>• possuir apenas um imóvel residencial de até 700 UVF (com exceções legais para neoplasia maligna);<br>• renda familiar mensal de até 3 salários mínimos;<br>• imóvel sem locação total ou parcial;<br>• pedido protocolado até 30 de novembro do exercício anterior ao lançamento;<br>• Certidão Negativa de Débitos Municipais (CND) válida durante o benefício.</p>`
-                },
-                {
-                    pergunta: "Quais são as condições para obtenção do desconto no IPTU referente a benfeitorias, conforme o art. 306 da Lei Complementar Municipal nº 011/2017?",
-                    resposta: `<p>O desconto no IPTU por benfeitorias é concedido ao contribuinte que realizar a construção ou reconstrução da calçada em toda a testada do imóvel, ou comprovar que a calçada existente está em bom estado de conservação. Para usufruir do benefício, o interessado deve protocolar requerimento até 30 de novembro do exercício anterior ao lançamento do tributo e manter CND do imóvel durante todo o período de concessão.</p>`
-                },
-                {
-                    pergunta: "O que é a progressividade do IPTU aplicada aos imóveis não edificados e por que o valor do imposto pode aumentar ao longo do tempo?",
-                    resposta: `<p>A progressividade do IPTU para imóveis não edificados permite ao Município aumentar gradualmente a alíquota ao longo do tempo, enquanto o imóvel não cumprir sua função social. O objetivo é estimular o adequado aproveitamento do solo urbano, evitar terrenos ociosos e combater a especulação imobiliária.</p><div class="base-legal"><strong>Base legal:</strong> Art. 156, § 1º, incisos I e II, e art. 182, § 4º, inciso II, da Constituição Federal; Art. 291 da Lei Complementar Municipal nº 011/2017, com redação dada pela LC nº 17/2019; Art. 7º da Lei Federal nº 10.257/2001 (Estatuto da Cidade).</div>`
-                },
-                {
-                    pergunta: "O Município pode fiscalizar o ITR e quais áreas do imóvel rural não são tributáveis por esse imposto?",
-                    resposta: `<p>O ITR é de competência da União. Entretanto, o Município pode fiscalizar, lançar e cobrar esse imposto mediante convênio com a Receita Federal, passando a receber 100% da arrecadação local. Não são tributáveis as áreas legalmente protegidas, como APP, reserva legal, RPPN, áreas de interesse ecológico declaradas, servidão ambiental, florestas nativas em estágio médio ou avançado de regeneração e áreas alagadas para reservatórios autorizados.</p>`
-                },
-                {
-                    pergunta: "Quais são as principais características da CBS e do IBS e como serão definidas suas alíquotas na Reforma Tributária?",
-                    resposta: `<p>A CBS (federal) e o IBS (estadual e municipal) terão natureza de IVA, com base ampla de incidência sobre bens, serviços e direitos, tributação no destino e não cumulatividade plena. As alíquotas da CBS, IBS e Imposto Seletivo ainda serão definidas em lei. Durante a transição, poderão ocorrer ajustes anuais pelo Senado Federal. Estimativas apontam alíquota-padrão combinada entre 25,45% e 27%.</p>`
-                },
-                {
-                    pergunta: "Como a Reforma Tributária afeta as empresas optantes pelo Simples Nacional e qual é o prazo de transição para os entes federados no IBS?",
-                    resposta: `<p>A Reforma Tributária mantém o Simples Nacional e permite que empresas optantes escolham recolher IBS e CBS dentro do Simples ou fora dele, no regime normal. Na transição do IBS: 2029 (90% ISS + 10% IBS), 2030 (80% + 20%), 2031 (70% + 30%), 2032 (60% + 40%). A partir de 2033, o ISS será extinto. A redistribuição da arrecadação segue gradualmente até 2078.</p>`
-                },
-                {
-                    secao: "Coordenadoria de Fiscalização Tributária"
-                },
-                {
-                    pergunta: "Como solicito a Taxa de Funcionamento e a emissão do Alvará de Renovação Anual?",
-                    resposta: `<p>A solicitação deve ser feita por peticionamento eletrônico no Sistema de Processos Eletrônicos (E-PROC), com direcionamento ao Departamento de Desenvolvimento Econômico e Mobiliário. Em caso de dúvidas, a Sala do Empreendedor atende pelo telefone (69) 99306-6416.</p>`
-                },
-                {
-                    pergunta: "Quais são as documentações necessárias para a solicitação da guia de ITBI e qual o prazo para sua emissão?",
-                    resposta: `<p>As documentações exigidas e o prazo de emissão estão regulamentados na Instrução Normativa nº 01, de 03/10/2025, disponível no Portal da Transparência: https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/publicacao/detalhe_documento.php?id_publicacao=40953&nomeaplicacao=publicacao</p>`
-                },
-                {
-                    pergunta: "A fiscalização tributária possui prazo para conclusão dos processos administrativos?",
-                    resposta: `<p>Sim. Os prazos de análise e conclusão no âmbito da Fiscalização Tributária estão definidos na Instrução Normativa nº 02, de 17/11/2025: https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=042016&extencao=PDF</p>`
-                },
-                {
-                    pergunta: "Qual é a ordem de atendimento dos processos no setor de Fiscalização Tributária?",
-                    resposta: `<p>Os processos são atendidos prioritariamente pela ordem cronológica de chegada ao setor e, depois, distribuídos de forma aleatória entre os Fiscais Tributários, observadas as competências legais.</p>`
-                },
-                {
-                    pergunta: "Qual é a lei que institui o Código Tributário do Município de Pimenta Bueno e como posso acessá-la?",
-                    resposta: `<p>O Código Tributário Municipal foi instituído pela Lei Complementar nº 011/2017. Consulta: https://leismunicipais.com.br/a1/codigo-tributario-pimenta-bueno-ro</p>`
-                },
-                {
-                    secao: "Superintendência de Receitas"
-                },
-                {
-                    pergunta: "Quais os documentos necessários para a abertura de processos administrativos?",
-                    resposta: `<p>O contribuinte deve retirar o requerimento específico no balcão de atendimento. O próprio formulário informa a relação de documentos obrigatórios conforme o tipo de solicitação.</p>`
-                },
-                {
-                    pergunta: "Qual o valor das taxas de serviços prestados pela SEMFAZ?",
-                    resposta: `<p>Os valores são calculados com base na Unidade Fiscal do Município e seguem tabela oficial vigente, com os custos de cada serviço. A tabela pode ser consultada no atendimento da SEMFAZ.</p>`
-                },
-                {
-                    pergunta: "Como posso consultar o andamento de um processo já aberto?",
-                    resposta: `<p>O acompanhamento pode ser feito no sistema eletrônico mediante cadastro e login: https://transparencia.pimentabueno.ro.gov.br/transparencia/servicos/. Também é possível consultar presencialmente no balcão de atendimento ou via WhatsApp: (69) 98116-2254.</p>`
-                },
-                {
-                    pergunta: "Onde posso obter informações gerais sobre setores e localização de servidores?",
-                    resposta: `<p>No atendimento presencial, os servidores orientam sobre a localização dos setores. Se a dúvida exigir suporte específico, o chefe imediato da área é acionado para complementar o atendimento.</p>`
-                },
-                {
-                    pergunta: "Como emitir a 2ª via de boletos de IPTU, TRSD (Taxa de Lixo) e taxas diversas?",
-                    resposta: `<p>As guias podem ser emitidas no Portal do Contribuinte: https://pimentabueno.ro.gov.br/pagina/202_EMISSAO-DE-IPTU.html, com Inscrição Imobiliária ou CPF/CNPJ. O serviço também está disponível no balcão presencial da SEMFAZ.</p>`
-                },
-                {
-                    pergunta: "Como obter Certidões Negativas (CND) ou Extratos de Débitos?",
-                    resposta: `<p>A CND pode ser emitida em: https://certidao.pimentabueno.ro.gov.br/servicosweb/home.xhtml. Havendo pendências, o contribuinte pode solicitar extrato detalhado para regularização à vista ou parcelada.</p>`
-                },
-                {
-                    pergunta: "Quais os procedimentos para Transferência de Imóveis (ITBI)?",
-                    resposta: `<p>Para lançamento do ITBI, deve-se protocolar processo com matrícula atualizada do imóvel, contrato de compra e venda (ou escritura pública) e documentos pessoais dos envolvidos. O imposto será calculado sobre o valor venal ou de transação, após avaliação fiscal.</p>`
-                },
-                {
-                    pergunta: "Como solicitar o parcelamento de débitos tributários?",
-                    resposta: `<p>O parcelamento de tributos vencidos ou inscritos em Dívida Ativa pode ser solicitado pelo titular ou procurador legal, com RG/CPF, comprovante de residência e Contrato Social (para empresas). A formalização ocorre com assinatura do Termo de Acordo e pagamento da primeira parcela.</p>`
-                },
-                {
-                    pergunta: "Como proceder para emissão de Nota Fiscal de Serviços (NFS-e)?",
-                    resposta: `<p>Prestadores e empresas devem possuir cadastro ativo na Receita Municipal. A emissão da NFS-e é feita eletronicamente no sistema da Prefeitura com senha autorizada, ou presencialmente na SEMFAZ com documentação do prestador e dados do tomador.</p>`
-                },
-                {
-                    pergunta: "É possível contestar o valor de um imposto ou taxa?",
-                    resposta: `<p>Sim. É possível protocolar Requerimento de Impugnação/Revisão dentro do prazo do Calendário Fiscal, anexando documentos comprobatórios (laudos, fotos e demais evidências) para análise.</p>`
-                },
-                {
-                    secao: "Superintendência de Desenvolvimento Econômico (Sala do Empreendedor)"
-                },
-                {
-                    pergunta: "Como formalizo como Microempreendedor Individual (MEI)?",
-                    resposta: `<p>Acesse a Sala do Empreendedor Digital de Pimenta Bueno em https://sites.google.com/view/saladoempreendedorpb/sala-digital e clique em "Formalize-se". O sistema redireciona para a plataforma oficial do Governo Federal, onde o CNPJ é gerado gratuitamente. Também há atendimento presencial para orientação.</p>`
-                },
-                {
-                    pergunta: "Como realizar a alteração dos dados do meu MEI?",
-                    resposta: `<p>No portal da Sala do Empreendedor Digital, escolha "Alterar dados do MEI" para ser redirecionado ao sistema oficial e atualizar endereço, atividades e demais dados cadastrais. Atendimento presencial gratuito também está disponível.</p>`
-                },
-                {
-                    pergunta: "Como emito nota fiscal sendo Microempreendedor Individual (MEI)?",
-                    resposta: `<p>O MEI deve emitir nota pelo Portal da NFS-e. Acesse https://sites.google.com/view/saladoempreendedorpb/sala-digital, clique em "Nota Fiscal do MEI" e faça login com conta gov.br para preencher os dados da emissão.</p>`
-                },
-                {
-                    pergunta: "O que preciso saber antes de me formalizar como MEI?",
-                    resposta: `<p>Antes de formalizar, verifique impactos em benefícios e requisitos legais. É necessário ter conta gov.br, exercer atividade permitida ao MEI, não ser sócio de outra empresa, não ter filial, contratar no máximo um empregado e respeitar o limite de faturamento. Benefícios assistenciais e previdenciários específicos podem ser afetados conforme regras de cada programa.</p>`
-                },
-                {
-                    pergunta: "Como entregar a Declaração Anual do MEI?",
-                    resposta: `<p>A DASN-SIMEI é entregue no portal oficial do Governo Federal. O acesso pode ser feito pela Sala do Empreendedor Digital, na opção "Entregar Declaração Anual de Faturamento".</p>`
-                },
-                {
-                    pergunta: "Como emitir o boleto DAS do MEI?",
-                    resposta: `<p>Na Sala do Empreendedor Digital, selecione "Emitir Boleto DAS" para ser direcionado ao portal oficial e gerar o documento de arrecadação mensal do MEI.</p>`
-                },
-                {
-                    pergunta: "Como peticiono o alvará da minha empresa?",
-                    resposta: `<p>O peticionamento do alvará é feito no sistema e-Proc. Acesse https://pimentabueno.ro.gov.br/pagina/171_Processo-Eletronico.html e realize cadastro como usuário externo. Tutorial: https://youtu.be/8ampsXMSjvQ?si=kVCZvsRufJ_nQFxD</p>`
-                },
-                {
-                    pergunta: "Como ter acesso às linhas de crédito do PROAMPE?",
-                    resposta: `<p>Acesse a Sala do Empreendedor Digital em https://sites.google.com/view/saladoempreendedorpb/sala-digital e clique em "Solicitar Crédito do PROAMPE" para simular e solicitar o microcrédito produtivo orientado.</p>`
-                },
-                {
-                    pergunta: "Como faço para me credenciar no Projeto Contrata + Pimenta e prestar serviços para a Prefeitura?",
-                    resposta: `<p>O credenciamento de MEI é feito por peticionamento no Processo Eletrônico do Município: https://pimentabueno.ro.gov.br/pagina/171_Processo-Eletronico.html, na opção "Usuário Externo". Depois, selecione o requerimento de credenciamento e anexe os documentos exigidos.</p>`
-                }
-            ]
-        },
-        semagri: {
-            nome: "SEMAGRI - Secretaria Municipal de Agricultura",
-            logo: "assets/SEMAGRI.png",
-            icone: "fas fa-leaf",
-            perguntas: [
-                {
-                    pergunta: "Orientação técnica aos agricultores: como plantar e executar culturas como mandioca, aracá-boi, melancia, coco e outras?",
-                    resposta: "<p>Cada cultura possui especificações próprias e forma correta de execução. A SEMAGRI orienta o produtor conforme a cultura e as condições da propriedade.</p>"
-                },
-                {
-                    pergunta: "Quando será liberado o Programa do PAA (Programa de Aquisição de Alimentos) e quais documentos são necessários para participar?",
-                    resposta: "<p>A liberação depende do recurso federal por meio da SEAGRI. A princípio, os documentos necessários são: documentos pessoais, SINTEGRA e CAF.</p>"
-                },
-                {
-                    pergunta: "Como conseguir calcário gratuito?",
-                    resposta: "<p>O acesso ocorre por convênio firmado entre o Estado e a SEMAGRI, mediante apresentação da documentação exigida no termo de convênio. O frete é de responsabilidade do contribuinte.</p>"
-                },
-                {
-                    pergunta: "Como obter análise de solo gratuita e como realizar a coleta?",
-                    resposta: "<p>A SEMAGRI realiza o cadastro do produtor e fornece as sacolas para coleta do solo. A orientação é coletar em zig-zag na propriedade, na profundidade de 20 cm. Dependendo do tamanho da área, será necessária mais de uma amostra.</p>"
-                },
-                {
-                    pergunta: "Qual a documentação necessária para cadastro no SINTEGRA?",
-                    resposta: "<p>Documentos exigidos (cópia e original): Escritura Pública, Título ou Terra Legal; se for contrato, cadeia nominal completa (documentação do contrato e do proprietário); para arrendatário, contrato; CAR; RG; CPF; certidão de casamento ou nascimento. Para cadastro voltado à pecuária, também é necessário o cadastro do IDARON.</p>"
-                }
-            ]
-        },
-        semma: {
-            nome: "SEMMA - Secretaria Municipal de Meio Ambiente",
-            logo: "assets/SEMMA.png",
-            icone: "fas fa-tree",
-            perguntas: [
-                {
-                    pergunta: "Qual o procedimento para solicitar a autorização de corte de árvores?",
-                    resposta: "<p>O cidadão deve protocolar processo eletrônico via Sistema E-PROC, preenchendo o requerimento específico para autorização de corte em áreas públicas ou particulares e anexando a documentação exigida no formulário.</p>"
-                },
-                {
-                    pergunta: "Como realizar uma denúncia de crime ambiental?",
-                    resposta: "<p>As denúncias podem ser formalizadas via WhatsApp: (69) 98169-9984, por requerimento protocolado fisicamente na sede da Secretaria Municipal de Meio Ambiente ou pelos canais oficiais da Ouvidoria Municipal.</p>"
-                },
-                {
-                    pergunta: "Onde posso obter as sacolas para a Coleta Seletiva?",
-                    resposta: "<p>As sacolas destinadas à coleta seletiva estão disponíveis para retirada direta na sede da Secretaria Municipal de Meio Ambiente.</p>"
-                },
-                {
-                    pergunta: "Quais são as regras para a retirada de mudas no Viveiro Municipal?",
-                    resposta: "<p>Cada munícipe pode retirar até 05 (cinco) mudas por visita. Para produtores rurais, é necessário cadastro prévio para fornecimento de quantitativos maiores, sujeito à análise técnica.</p>"
-                },
-                {
-                    pergunta: "Como obter informações sobre o Licenciamento Ambiental para empresas ou atividades produtivas?",
-                    resposta: "<p>O interessado deve iniciar o processo no Sistema E-PROC, enviando o formulário de caracterização do empreendimento e os estudos ambientais pertinentes, conforme a legislação municipal vigente.</p>"
-                }
-            ]
-        },
-        semosp: {
-            nome: "SEMOSP - Secretaria Municipal de Obras e Serviços Públicos",
-            logo: "assets/SEMOSP.png",
-            icone: "fas fa-hard-hat",
-            perguntas: [
-                {
-                    pergunta: "Quais são as atribuições da Secretaria Municipal de Obras, Serviços Públicos e Trânsito?",
-                    resposta: "<p>A Secretaria é responsável pela execução de obras públicas, manutenção de vias urbanas e rurais, serviços de infraestrutura, limpeza urbana, iluminação pública e pela gestão do trânsito municipal.</p>"
-                },
-                {
-                    pergunta: "Como solicitar serviços de manutenção de vias (tapa-buracos, patrolamento, cascalhamento)?",
-                    resposta: "<p>As solicitações podem ser feitas por meio do protocolo da Prefeitura, presencialmente, pelo site da Prefeitura ou pelos canais de atendimento disponibilizados pelo Município.</p>"
-                },
-                {
-                    pergunta: "Quem é responsável pela manutenção da iluminação pública?",
-                    resposta: "<p>A manutenção da iluminação pública é de responsabilidade da Secretaria Municipal de Obras, em específico o setor de Superintendência de Iluminação Pública, que atua na substituição de lâmpadas, reparos e melhorias na rede de iluminação urbana.</p>"
-                },
-                {
-                    pergunta: "Como comunicar problemas em vias públicas?",
-                    resposta: "<p>O cidadão pode registrar a demanda junto à Secretaria por meio dos canais oficiais de atendimento, informando o local e a natureza do problema para providências.</p>"
-                },
-                {
-                    pergunta: "A Secretaria é responsável por obras em áreas rurais?",
-                    resposta: "<p>Sim. A Secretaria executa e acompanha serviços de manutenção e melhorias em estradas vicinais, pontes e demais infraestruturas da zona rural, conforme planejamento e disponibilidade orçamentária.</p>"
-                },
-                {
-                    pergunta: "Como é definida a prioridade de atendimento das solicitações de serviços?",
-                    resposta: "<p>As solicitações são analisadas pela equipe técnica da Secretaria, que define as prioridades com base na urgência, impacto à população, condições de segurança, disponibilidade de recursos e planejamento operacional.</p>"
-                },
-                {
-                    pergunta: "Quem define a sinalização e organização do trânsito no município?",
-                    resposta: "<p>A organização, sinalização e intervenções no trânsito urbano são de responsabilidade da Secretaria, que atua conforme a legislação de trânsito e estudos técnicos de mobilidade.</p>"
-                },
-                {
-                    pergunta: "É possível solicitar interdição de via ou apoio para eventos?",
-                    resposta: "<p>Sim. A solicitação deve ser formalizada por meio do protocolo da Prefeitura, com antecedência, para análise técnica e autorização, especialmente em casos de eventos, obras ou mudanças temporárias no tráfego.</p>"
-                },
-                {
-                    pergunta: "Como acompanhar o andamento de obras públicas no município?",
-                    resposta: "<p>As informações sobre obras podem ser consultadas no site da Prefeitura, no Portal da Transparência ou diretamente junto à Secretaria Municipal de Obras.</p>"
-                },
-                {
-                    pergunta: "Como entrar em contato com a Secretaria Municipal de Obras, Serviços Públicos e Trânsito?",
-                    resposta: "<p>O contato pode ser realizado presencialmente na sede da Secretaria Municipal de Obras, por telefone, e-mail institucional ou pelos canais oficiais disponíveis no site da Prefeitura.</p>"
-                }
-            ]
-        },
-        semsau: {
-            nome: "SEMSAU - Secretaria Municipal de Saúde",
-            logo: "assets/SEMSAU.png",
-            icone: "fas fa-hospital-user",
-            perguntas: [
-                {
-                    pergunta: "O que é o Centro de Especialidades Médicas?",
-                    resposta: "<p>O Centro de Especialidades Médicas é a unidade responsável pelo atendimento ambulatorial em especialidades médicas, mediante encaminhamento da Atenção Básica, conforme a organização da Rede de Atenção à Saúde do SUS.</p>"
-                },
-                {
-                    pergunta: "Como o paciente pode ter acesso às consultas no Centro de Especialidades Médicas?",
-                    resposta: "<p>O acesso ocorre exclusivamente por meio de encaminhamento realizado pela Unidade Básica de Saúde (UBS) de referência, com posterior inserção do pedido no SISREG, para análise e agendamento conforme a disponibilidade de vagas.</p>"
-                },
-                {
-                    pergunta: "O que é o SISREG?",
-                    resposta: "<p>O SISREG é o Sistema Nacional de Regulação, utilizado para organizar, controlar e priorizar o acesso dos usuários às consultas especializadas, exames e procedimentos ofertados pelo SUS.</p>"
-                },
-                {
-                    pergunta: "Qual a finalidade da Regulação em Saúde?",
-                    resposta: "<p>A Regulação em Saúde tem como finalidade garantir o acesso ordenado, equânime e transparente aos serviços de saúde, priorizando os atendimentos conforme critérios clínicos, protocolos assistenciais e a disponibilidade da rede. Também é responsável pela organização e gerenciamento do transporte de pacientes para tratamento fora do domicílio, incluindo pacientes oncológicos, em hemodiálise e demais viagens necessárias para continuidade do tratamento.</p>"
-                },
-                {
-                    pergunta: "Como funciona a fila de espera para consultas especializadas?",
-                    resposta: "<p>Os pedidos inseridos no SISREG são avaliados pela equipe de Regulação, que classifica os casos de acordo com a gravidade, urgência e critérios técnicos, respeitando a prioridade clínica e a oferta de vagas.</p>"
-                },
-                {
-                    pergunta: "O paciente pode escolher o médico ou a data da consulta especializada?",
-                    resposta: "<p>Não. As consultas são agendadas conforme a disponibilidade de vagas e os critérios definidos pela Regulação, não sendo possível a escolha do profissional ou da data pelo paciente.</p>"
-                },
-                {
-                    pergunta: "Quais especialidades médicas são ofertadas pelo Centro de Especialidades Médicas?",
-                    resposta: "<p>O Centro de Especialidades Médicas oferta atendimentos nas seguintes especialidades e serviços: ortopedia, ginecologia, pediatria e cirurgia geral, além da realização de exames de mamografia e eletrocardiograma, conforme a disponibilidade e a regulação do sistema.</p>"
-                },
-                {
-                    pergunta: "É possível acompanhar o andamento do pedido no SISREG?",
-                    resposta: "<p>Sim. O paciente pode obter informações sobre o andamento do pedido junto à UBS de referência ou diretamente no setor de Regulação da Secretaria Municipal de Saúde.</p>"
-                },
-                {
-                    pergunta: "O que acontece se o paciente faltar à consulta agendada?",
-                    resposta: "<p>A ausência injustificada pode resultar no retorno do pedido ao final da fila de regulação, sendo necessário novo encaminhamento pela UBS de referência.</p>"
-                },
-                {
-                    pergunta: "Como o cidadão pode registrar dúvidas, reclamações ou sugestões sobre a Regulação e o Centro de Especialidades?",
-                    resposta: "<p>As manifestações podem ser registradas junto à Secretaria Municipal de Saúde ou por meio dos canais oficiais da Ouvidoria do Município.</p>"
-                }
-            ]
-        }
-    };
+            const tituloIcone = data.logo
+                ? `<img class="faq-titulo-logo" src="${data.logo}" alt="Logo ${data.nome}">`
+                : `<i class="${data.icone}"></i>`;
 
-    // Função para gerar HTML do acordeon (baseado nas perguntas/respostas)
-    function renderAccordion(secretariaKey) {
-        const data = faqData[secretariaKey];
-        if (!data) return "<p>FAQ não disponível para esta secretaria no momento.</p>";
-        
-        const tituloIcone = data.logo
-            ? `<img class="faq-titulo-logo" src="${data.logo}" alt="Logo ${data.nome}">`
-            : `<i class="${data.icone}"></i>`;
-
-        let html = `<div class="faq-titulo-secretaria">
+            let html = `<div class="faq-titulo-secretaria">
                         ${tituloIcone}
                         <span>${data.nome}</span>
                     </div>
                     <div class="accordion" id="accordionFaq">`;
-        
-        let questionNumber = 0;
-        let sectionNumber = 0;
-        data.perguntas.forEach((item) => {
-            if (item.secao) {
-                sectionNumber += 1;
-                html += `<div class="faq-section-title section-${sectionNumber}">${item.secao}</div>`;
-                return;
-            }
 
-            questionNumber += 1;
-            html += `
+            let questionNumber = 0;
+            let sectionNumber = 0;
+            data.perguntas.forEach((item) => {
+                if (item.secao) {
+                    sectionNumber += 1;
+                    html += `<div class="faq-section-title section-${sectionNumber}">${item.secao}</div>`;
+                    return;
+                }
+
+                questionNumber += 1;
+                html += `
                 <div class="accordion-item">
-                    <div class="accordion-header" data-index="${questionNumber - 1}">
+                    <div class="accordion-header" data-index="${questionNumber - 1}" tabindex="0" aria-expanded="false" role="button">
                         <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                             <span class="question-number">${questionNumber}</span>
                             <span class="question-text">${item.pergunta}</span>
@@ -833,80 +900,110 @@
                     </div>
                 </div>
             `;
-        });
-        
-        html += `</div>`;
-        return html;
-    }
+            });
 
-    function formatResposta(resposta) {
-        if (!resposta) return "";
+            html += `</div>`;
+            return html;
+        }
 
-        let output = resposta;
+        function formatResposta(resposta) {
+            if (!resposta) return "";
 
-        // Converte URLs em links clicaveis.
-        output = output.replace(/(https?:\/\/[^\s<>"]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+            let output = resposta;
 
-        // Converte telefones brasileiros em links de WhatsApp.
-        output = output.replace(/\(?(\d{2})\)?\s?(9?\d{4})-?(\d{4})/g, (match, ddd, parte1, parte2) => {
-            const numero = `55${ddd}${parte1}${parte2}`;
-            return `<a href="https://wa.me/${numero}" target="_blank" rel="noopener noreferrer">${match}</a>`;
-        });
+            // Converte URLs em links clicaveis (ignorando pontos ou vírgulas no final da frase)
+            output = output.replace(/(https?:\/\/[^\s<>"]+)/g, (match) => {
+                const cleanUrl = match.replace(/[.,;]$/, '');
+                const trailing = match.substring(cleanUrl.length);
+                return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>${trailing}`;
+            });
 
-        return output;
-    }
+            // Converte telefones brasileiros em links de WhatsApp.
+            output = output.replace(/\(?(\d{2})\)?\s?(9?\d{4})-?(\d{4})/g, (match, ddd, parte1, parte2) => {
+                const numero = `55${ddd}${parte1}${parte2}`;
+                return `<a href="https://wa.me/${numero}" target="_blank" rel="noopener noreferrer">${match}</a>`;
+            });
 
-    // Carregar FAQ inicial (SEMFAZ)
-    const faqContainer = document.getElementById("faqContainer");
-    let currentSecretaria = "semfaz";
-    
-    function loadFAQ(secretariaId) {
-        faqContainer.innerHTML = renderAccordion(secretariaId);
-        currentSecretaria = secretariaId;
-        applySectionAnimations();
-        attachAccordionEvents();
-    }
+            return output;
+        }
 
-    function applySectionAnimations() {
-        const animatedBlocks = faqContainer.querySelectorAll('.faq-section-title, .accordion-item');
-        animatedBlocks.forEach((el, idx) => {
-            const delay = Math.min(idx * 55, 900);
-            el.style.setProperty('--reveal-delay', `${delay}ms`);
-            el.style.animation = 'none';
-            void el.offsetWidth;
-            el.style.animation = '';
-        });
-    }
+        // Carregar FAQ inicial (SEMFAZ)
+        const faqContainer = document.getElementById("faqContainer");
+        let currentSecretaria = "transparencia";
 
-    // Ativar toggle dos acordeons
-    function attachAccordionEvents() {
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        accordionItems.forEach(item => {
-            const header = item.querySelector('.accordion-header');
-            header.removeEventListener('click', header.clickHandler);
-            const clickHandler = () => {
-                item.classList.toggle('active');
+        function loadFAQ(secretariaId) {
+            faqContainer.innerHTML = renderAccordion(secretariaId);
+            currentSecretaria = secretariaId;
+            applySectionAnimations();
+            attachAccordionEvents();
+        }
+
+        function applySectionAnimations() {
+            const animatedBlocks = faqContainer.querySelectorAll('.faq-section-title, .accordion-item');
+            animatedBlocks.forEach((el, idx) => {
+                const delay = Math.min(idx * 55, 900);
+                el.style.setProperty('--reveal-delay', `${delay}ms`);
+                el.style.animation = 'none';
+                void el.offsetWidth;
+                el.style.animation = '';
+            });
+        }
+
+        // Ativar toggle dos acordeons
+        function attachAccordionEvents() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+
+                if (header.clickHandler) {
+                    header.removeEventListener('click', header.clickHandler);
+                    header.removeEventListener('keydown', header.keydownHandler);
+                }
+
+                const toggleAccordion = () => {
+                    const isActive = item.classList.toggle('active');
+                    header.setAttribute('aria-expanded', isActive);
+                };
+
+                header.clickHandler = toggleAccordion;
+                header.keydownHandler = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleAccordion();
+                    }
+                };
+
+                header.addEventListener('click', header.clickHandler);
+                header.addEventListener('keydown', header.keydownHandler);
+            });
+        }
+
+        // Alternar secretarias ativas nos botões
+        const secretariaElements = document.querySelectorAll('.secretaria-item');
+        secretariaElements.forEach(btn => {
+            const activateTab = () => {
+                const secretariaId = btn.getAttribute('data-secretaria');
+                if (!secretariaId) return;
+                // atualizar classe ativa
+                secretariaElements.forEach(el => el.classList.remove('active'));
+                btn.classList.add('active');
+                loadFAQ(secretariaId);
             };
-            header.addEventListener('click', clickHandler);
-            header.clickHandler = clickHandler;
-        });
-    }
 
-    // Alternar secretarias ativas nos botões
-    const secretariaElements = document.querySelectorAll('.secretaria-item');
-    secretariaElements.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const secretariaId = btn.getAttribute('data-secretaria');
-            if (!secretariaId) return;
-            // atualizar classe ativa
-            secretariaElements.forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-            loadFAQ(secretariaId);
-        });
-    });
+            btn.addEventListener('click', activateTab);
 
-    // Carregar inicialmente a SEMFAZ
-    loadFAQ('semfaz');
-</script>
+            // Permite ativar a aba da secretaria pressionando Enter ou Espaço
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    activateTab();
+                }
+            });
+        });
+
+        // Carregar inicialmente a aba da Transparência
+        loadFAQ('transparencia');
+    </script>
 </body>
+
 </html>
