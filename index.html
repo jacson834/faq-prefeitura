@@ -829,7 +829,7 @@
                         <div class="icon">+</div>
                     </div>
                     <div class="accordion-content">
-                        ${item.resposta}
+                        ${formatResposta(item.resposta)}
                     </div>
                 </div>
             `;
@@ -837,6 +837,23 @@
         
         html += `</div>`;
         return html;
+    }
+
+    function formatResposta(resposta) {
+        if (!resposta) return "";
+
+        let output = resposta;
+
+        // Converte URLs em links clicaveis.
+        output = output.replace(/(https?:\/\/[^\s<>"]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+        // Converte telefones brasileiros em links de WhatsApp.
+        output = output.replace(/\(?(\d{2})\)?\s?(9?\d{4})-?(\d{4})/g, (match, ddd, parte1, parte2) => {
+            const numero = `55${ddd}${parte1}${parte2}`;
+            return `<a href="https://wa.me/${numero}" target="_blank" rel="noopener noreferrer">${match}</a>`;
+        });
+
+        return output;
     }
 
     // Carregar FAQ inicial (SEMFAZ)
